@@ -53,6 +53,16 @@ Fractional scaling with KDE on Wayland mostly works fine, but here are a few tip
 * Plasma panels aren't scaled on X11 by default, but can be forced with an env variable: `PLASMA_USE_QT_SCALING=1`
 * Blur effects are buggy and should be disabled.
 
+## Ethernet
+
+Due to whatever reason r8169 driver is unstable and causes kernel hangs, even when ethernet is not used.
+Realtek's r8168 fixes that:
+```
+sudo dnf copr enable sunwire/dkms-r8168
+sudo dnf install dkms-r8168
+sudo dracut -f
+```
+
 ## Notes
 
 * From my testing, gaming performance in different modes mostly scales like this: MUX X11 > PRIME Wayland > PRIME X11 > MUX Wayland
