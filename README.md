@@ -8,10 +8,9 @@ Follow the [ASUS Linux guide](https://asus-linux.org/wiki/fedora-guide/) for Fed
 
 ## Sound
 
-As of kernel 6.5.5, cs35l41 amp requires workarounds to function properly: DSDT patch and snd-hda-intel module parameter.
+As of kernel 6.5.9, cs35l41 amp requires DSDT patch to work properly.
 You can either use the prebuilt `patched_cirrus_acpi.cpio` or [build it yourself](https://asus-linux.org/wiki/cirrus-amps/#install-the-ssdt-patch) from the provided `patch.dsl`.
 * Copy `boot/patched_cirrus_acpi.cpio` to `/boot`
-* Copy `etc/modprobe.d/alsa.conf` to `/etc/modprobe.d`
 * Add this to `/etc/default/grub`:
 `GRUB_EARLY_INITRD_LINUX_CUSTOM="patched_cirrus_acpi.cpio"`
 * Regenerate grub config: `sudo grub2-mkconfig -o /etc/grub2-efi.cfg`
