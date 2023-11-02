@@ -9,11 +9,8 @@ Follow the [ASUS Linux guide](https://asus-linux.org/wiki/fedora-guide/) for Fed
 ## Sound
 
 As of kernel 6.5.9, cs35l41 amp requires DSDT patch to work properly.
-You can either use the prebuilt `patched_cirrus_acpi.cpio` or [build it yourself](https://asus-linux.org/wiki/cirrus-amps/#install-the-ssdt-patch) from the provided `patch.dsl`.
-* Copy `boot/patched_cirrus_acpi.cpio` to `/boot`
-* Add this to `/etc/default/grub`:
-`GRUB_EARLY_INITRD_LINUX_CUSTOM="patched_cirrus_acpi.cpio"`
-* Regenerate grub config: `sudo grub2-mkconfig -o /etc/grub2-efi.cfg`
+* Copy `etc/dracut.conf.d` contents to `/etc/dracut.conf.d`
+* Regenerate initramfs: `sudo dracut -f`
 
 Recommended, but not essential - enable full preemption to improve pipewire latency:
 * Add `preempt=full` to `GRUB_CMDLINE_LINUX` in `/etc/default/grub`
