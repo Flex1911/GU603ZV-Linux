@@ -1,0 +1,14 @@
+#!/bin/sh
+case $1/$2 in
+  pre/hibernate)
+    echo "Going to hibernate..."
+    ;;
+  post/hibernate)
+    echo "Waking up from hibernate..."
+    PLATFORM_PROFILE=`cat /sys/firmware/acpi/platform_profile`
+    BRIGHTNESS=`cat /sys/class/backlight/nvidia_wmi_ec_backlight/brightness`
+
+    echo $PLATFORM_PROFILE > /sys/firmware/acpi/platform_profile
+    echo $BRIGHTNESS > /sys/class/backlight/nvidia_wmi_ec_backlight/brightness
+    ;;
+esac

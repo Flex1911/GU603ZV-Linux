@@ -59,6 +59,13 @@ sudo dnf install dkms-r8168
 sudo dracut -f
 ```
 
+# Hibernation
+
+When using hibernation, platform profiles and brightness don't restore properly on resume.
+There's a systemd-sleep hook that restores them:
+* Copy `usr/lib/systemd/system-sleep/restore-state` to `/usr/lib/systemd/system-sleep/`
+
+
 ## Notes
 
 * From my testing, gaming performance in different modes mostly scales like this: MUX X11 > PRIME Wayland > PRIME X11 > MUX Wayland
